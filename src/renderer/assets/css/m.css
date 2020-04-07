@@ -1,0 +1,37 @@
+body{
+    user-select: none;
+}
+
+ ::selection {
+    color: #ffffff;
+    background-color: #c2300b;
+    text-shadow: none;
+}
+
+ ::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+ ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+ ::-webkit-scrollbar-thumb {
+    height: 40px;
+    background: #999;
+    border-radius: 6px;
+}
+
+.t {
+    transition: all 0.3s
+}
+
+.df {
+    display: flex;
+}
+
+.f1 {
+    flex: 1;
+}
