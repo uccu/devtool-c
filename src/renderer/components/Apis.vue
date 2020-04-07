@@ -77,6 +77,21 @@ export default {
             dvalue = val;
             if (p.cover) p.default = dvalue;
           }
+          if (p.type) {
+            if (p.type === "numer") {
+              dvalue = parseInt(dvalue);
+            } else if (p.type === "float") {
+              dvalue = parseFloat(dvalue);
+            } else if (p.type === "boolean") {
+              dvalue = dvalue ? true : false;
+            } else if (p.type === "json") {
+              try {
+                dvalue = JSON.parse(dvalue);
+              } catch (e) {
+                return;
+              }
+            }
+          }
           params[p.name] = dvalue;
         }
       }

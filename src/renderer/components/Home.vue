@@ -33,6 +33,7 @@ export default {
       this.selectedProject = pro;
       if (pro) this.selectedProjectName = pro.name || "";
       else this.selectedProjectName = "";
+      this.flesh();
     },
     getSelectedProject(pro) {
       return this.selectedProject;
@@ -48,14 +49,14 @@ export default {
           this.selectedProject = projects[i];
           this.selectedProjectName = i;
         } else {
-          projects[i].tag = "";
+          projects[i].tag = projects[i].defaultTag || "info";
         }
-        this.projects = projects;
       }
       if (!hasp) {
         this.selectedProject = undefined;
         this.selectedProjectName = "";
       }
+      this.projects = projects;
     }
   },
   provide() {

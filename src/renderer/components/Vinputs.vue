@@ -24,6 +24,12 @@
           <el-button
             v-if="high"
             size="mini"
+            :type="selected.cover ?'success':'info'"
+            @click="selected.cover = !selected.cover"
+          >覆盖</el-button>
+          <el-button
+            v-if="high"
+            size="mini"
             :type="selected.hidden ?'success':'info'"
             @click="selected.hidden = !selected.hidden"
           >隐藏</el-button>
@@ -31,6 +37,12 @@
         </div>
         <div class="ipnut-el">
           <el-input v-model="selected.default" :placeholder="'请输入'+title+'值'"></el-input>
+        </div>
+      </div>
+      <div class="df" v-if="high">
+        <div class="ipnut-title">类型：</div>
+        <div class="ipnut-el">
+          <el-input v-model="selected.type" placeholder="string"></el-input>
         </div>
       </div>
       <div class="df" v-if="high">
@@ -67,7 +79,7 @@ export default {
       this.$emit("select", k);
     }
   },
-  props: ["list", "selected", "title","high"]
+  props: ["list", "selected", "title", "high"]
 };
 </script>
 

@@ -118,7 +118,8 @@ export default {
       this.info.params.push({
         name: "",
         default: "",
-        hidden: false
+        hidden: false,
+        cover: false
       });
       this.selectParam(this.info.params.length - 1);
     },
@@ -143,7 +144,8 @@ export default {
       this.info.restParams.push({
         name: "",
         default: "",
-        hidden: false
+        hidden: false,
+        cover: false
       });
       this.selectRestParam(this.info.restParams.length - 1);
     },
@@ -272,7 +274,7 @@ export default {
   position: fixed;
   right: -100%;
   top: 0;
-  width: 500px;
+  width: 600px;
   height: 100%;
   z-index: 11;
   background-color: #fff;

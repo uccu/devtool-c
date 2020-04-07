@@ -8,7 +8,7 @@
         <template v-for="(p, i) in projects">
           <el-tag
             effect="dark"
-            v-bind:type="p.tag || p.defaultTag || 'info'"
+            :type="p.tag || p.defaultTag || 'info'"
             @click="selectProject(p)"
           >{{p.title || i}}</el-tag>
         </template>
@@ -27,7 +27,7 @@ export default {
     selectProject(p) {
       let project = this.selectedProject;
       if (project) {
-        project.tag = undefined;
+        project.tag = "";
       }
       
       if (project === p) {
