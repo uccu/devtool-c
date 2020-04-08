@@ -23,7 +23,7 @@ import tool from "../service/tool";
 export default {
   name: "Apis",
   components: {},
-  inject: ["changeProject"],
+  inject: ["changeProject","homeFlesh"],
   methods: {
     handleCommand([command, api, i]) {
       if (command == "edit") {
@@ -78,7 +78,7 @@ export default {
             if (p.cover) p.default = dvalue;
           }
           if (p.type) {
-            if (p.type === "numer") {
+            if (p.type === "number") {
               dvalue = parseInt(dvalue);
             } else if (p.type === "float") {
               dvalue = parseFloat(dvalue);

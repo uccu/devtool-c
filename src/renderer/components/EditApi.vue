@@ -203,7 +203,7 @@ export default {
         return;
       }
       if (this.add) {
-        if (this.selectedProject[this.info.name]) {
+        if (this.selectedProject.apiList[this.info.name]) {
           this.$message.error("该接口标识已存在，请更换一个标识");
           return;
         }

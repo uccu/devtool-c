@@ -33,7 +33,6 @@ export default {
       this.selectedProject = pro;
       if (pro) this.selectedProjectName = pro.name || "";
       else this.selectedProjectName = "";
-      this.flesh();
     },
     getSelectedProject(pro) {
       return this.selectedProject;
