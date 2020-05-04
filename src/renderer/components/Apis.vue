@@ -2,16 +2,19 @@
   <div class="apis">
     <el-main>
       <div style="padding-left:60px">
-        <template v-for="(p, i) in (selectedProject?selectedProject.apiList:[])">
-          <el-dropdown @command="handleCommand">
-            <span @click="request(p)">
-              <el-button style="margin:10px;" size="mini" :type="p.type" plain>{{p.title || i}}</el-button>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item :command="['edit',p,i]">修改</el-dropdown-item>
-              <el-dropdown-item :command="['del',i]" class="del">删除</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+        <template v-for="(apiList, category) in apis">
+          <div class="hr">{{category}}</div>
+          <template v-for="(p, i) in apiList">
+            <el-dropdown @command="handleCommand">
+              <span @click="request(p)">
+                <el-button style="margin:10px;" size="mini" :type="p.type" plain>{{p.title || i}}</el-button>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item :command="['edit', p, i]">修改</el-dropdown-item>
+                <el-dropdown-item :command="['del', i]" class="del">删除</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </template>
         </template>
       </div>
     </el-main>
@@ -23,7 +26,7 @@ import tool from "../service/tool";
 export default {
   name: "Apis",
   components: {},
-  inject: ["changeProject","homeFlesh"],
+  inject: ["changeProject", "homeFlesh"],
   methods: {
     handleCommand([command, api, i]) {
       if (command == "edit") {
@@ -199,11 +202,38 @@ export default {
         });
     }
   },
-  props: ["selectedProject"]
+  props: ["selectedProject"],
+  data() {
+    return {
+      apis: {}
+    };
+  },
+  watch: {
+    selectedProject: {
+      immediate: true,
+      handler(val) {
+        const list = val ? val.apiList : [];
+        for (let i in list) {
+          const category = list[i].category || "default";
+          if (!this.apis[category]) this.apis[category] = {};
+          this.apis[category][i] = list[i];
+        }
+        console.log(this.apis);
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
+.hr {
+  width: 100%;
+  border-bottom: solid 1px #eee;
+  font-size: 14px;
+  font-weight: 700;
+  color: brown;
+  margin-top:20px;
+}
 .el-tag {
   margin: 10px;
   cursor: pointer;

@@ -65,6 +65,13 @@
         </div>
       </div>
 
+      <div class="df">
+        <div class="ipnut-title">分类：</div>
+        <div class="ipnut-el">
+          <el-input v-model="info.category" placeholder="default"></el-input>
+        </div>
+      </div>
+
       <Vinputs
         :list="info.headers"
         :selected="selectedHeader"
